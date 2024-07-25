@@ -26,10 +26,10 @@ jobs:
         shell: bash
         run: |
           terraform init
-          terraform apply --auto-approve -input=false -var='use_msi=false'
+          terraform apply --auto-approve -input=false -var='use_msi=false' -var='subscription_id=${{ secrets.SUBSCRIPTION_ID}}'
 
       - name: Terraform apply failed
         shell: bash
         run: |
           terraform init
-          terraform apply --auto-approve -input=false -var='use_msi=true'
+          terraform apply --auto-approve -input=false -var='use_msi=true' -var='subscription_id=${{ secrets.SUBSCRIPTION_ID}}'
